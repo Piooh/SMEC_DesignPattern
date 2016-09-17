@@ -1,50 +1,58 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-using ReadOnlys;
+using Assets.Lecture3.ReadOnlys;
 
-public class Character : MonoBehaviour
+namespace Assets.Lecture3
 {
-	public Animator animator = null;
-
-	private void Awake()
+	public class Character : MonoBehaviour
 	{
-		Debug.Assert( null != animator, "Check Animator!!!!" );
-	}
+		public Animator animator = null;
 
-	private void FixedUpdate()
-	{
-		if( true == Input.GetMouseButtonUp(0) )
+		private ISoldierAction attackAction = null;
+
+		private void Awake()
 		{
-			Attack();
-		}
-	}
+			Debug.Assert( null != animator, "Check Animator!!!!" );
 
-	private void Attack()
-	{
-		if( animator.GetCurrentAnimatorStateInfo(0).fullPathHash != Lecture3.AnimationID.SwordWait )
-		{
-			return;
+			//attackAction = SwordAction.Get();
+			attackAction = MagicianAction.Get();
 		}
 
-		Debug.LogError("Attttttttttttttttttttttack");
-		animator.SetInteger( Lecture3.AnimationID.SwordState, Lecture3.Action.Attack.ToInt() );
-
-		StartCoroutine( CheckAniEnd() );
-	}
-
-	private IEnumerator CheckAniEnd()
-	{
-		float playTime = 0f;
-		float endTime = animator.GetCurrentAnimatorStateInfo(0).length;
-
-		do
+		private void FixedUpdate()
 		{
-			playTime  += 0.1f;
-			yield return null;
+			if( true == Input.GetMouseButtonUp(0) )
+			{
+				Attack();
+			}
 		}
-		while( playTime > endTime );
 
-		animator.SetInteger( Lecture3.AnimationID.SwordState, Lecture3.Action.Idle.ToInt() );
+		private void Attack()
+		{
+			if( animator.GetCurrentAnimatorStateInfo(0).fullPathHash != AnimationID.SwordWait )
+			{
+				return;
+			}
+
+			attackAction.Attack();
+			animator.SetInteger( AnimationID.SwordState, Action.Attack.ToInt() );
+
+			StartCoroutine( CheckAniEnd() );
+		}
+
+		private IEnumerator CheckAniEnd()
+		{
+			float playTime = 0f;
+			float endTime = animator.GetCurrentAnimatorStateInfo(0).length;
+
+			do
+			{
+				playTime  += 0.1f;
+				yield return null;
+			}
+			while( playTime > endTime );
+
+			animator.SetInteger( AnimationID.SwordState, Action.Idle.ToInt() );
+		}
 	}
 }
