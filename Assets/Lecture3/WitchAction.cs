@@ -4,13 +4,13 @@ using Assets.Lecture3.ReadOnlys;
 
 namespace Assets.Lecture3
 {
-	public class SwordAction : ISoldierAction
+	public class WitchAction : ISoldierAction
 	{
 		private Animator animator = null;
 
-		public static SwordAction Get( Animator animator )
+		public static WitchAction Get( Animator animator )
 		{
-			var action				= new SwordAction();
+			var action				= new WitchAction();
 			action.animator	= animator;
 
 			return null == action.animator ? null : action;
@@ -23,7 +23,7 @@ namespace Assets.Lecture3
 				return;
 			}
 
-			Debug.Log( "SwordMan : Sword Attack!!" );
+			Debug.Log( "Witch : Magic Attack !!" );
 			animator.SetInteger( AnimationID.AniState, Action.Attack.ToInt() );
 		}
 

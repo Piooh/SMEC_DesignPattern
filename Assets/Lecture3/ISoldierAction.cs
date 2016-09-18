@@ -1,8 +1,11 @@
-﻿
+﻿using System.Collections;
+
+
 namespace Assets.Lecture3
 {
-	interface ISoldierAction
+	public interface ISoldierAction
 	{
 		void Attack();
+		IEnumerator CheckAniEnd();
 	}
 }

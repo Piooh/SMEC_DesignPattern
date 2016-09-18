@@ -10,9 +10,9 @@ namespace Assets.Lecture3.ReadOnlys
 
 	public class AnimationID
 	{
-		public static readonly int SwordState		= Animator.StringToHash("AnimationState");
-		public static readonly int SwordWait		= Animator.StringToHash("Base Layer.Wait");
-		public static readonly int SwordAttack		= Animator.StringToHash("Base Layer.Attack");
+		public static readonly int AniState		= Animator.StringToHash("AnimationState");
+		public static readonly int Idle				= Animator.StringToHash("Base Layer.Idle");
+		public static readonly int Attack			= Animator.StringToHash("Base Layer.Attack");
 	}
 
 	public static class EnumExtension
