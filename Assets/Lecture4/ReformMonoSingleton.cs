@@ -1,38 +1,41 @@
 ﻿using UnityEngine;
 
-public class ReformMonoSingleton : MonoBehaviour
+namespace Assets.Lecture4
 {
-	private static ReformMonoSingleton instance = null;
-
-	public static ReformMonoSingleton Instance
+	public class ReformMonoSingleton : MonoBehaviour
 	{
-		get
+		private static ReformMonoSingleton instance = null;
+
+		public static ReformMonoSingleton Instance
 		{
-			if( null == instance )
+			get
 			{
-				instance = GameObject.FindObjectOfType<ReformMonoSingleton>();
 				if( null == instance )
 				{
-					var go			= new GameObject("ReformMonoSingleton");
-					instance		= go.AddComponent<ReformMonoSingleton>();
-					DontDestroyOnLoad(go);
+					instance = GameObject.FindObjectOfType<ReformMonoSingleton>();
+					if( null == instance )
+					{
+						var go			= new GameObject("ReformMonoSingleton");
+						instance		= go.AddComponent<ReformMonoSingleton>();
+						DontDestroyOnLoad(go);
+					}
 				}
+
+				return instance;
 			}
-
-			return instance;
 		}
-	}
 
-	private void Awake()
-	{
-		if( null != instance )
+		private void Awake()
 		{
-			Destroy(this);
-		}
-		else
-		{
-			instance = this;
-			DontDestroyOnLoad(gameObject);
+			if( null != instance )
+			{
+				Destroy(this);
+			}
+			else
+			{
+				instance = this;
+				DontDestroyOnLoad(gameObject);
+			}
 		}
 	}
 }

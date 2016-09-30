@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
-public class VerySimpleMonoSingleton : MonoBehaviour
+namespace Assets.Lecture4
 {
-	public static VerySimpleMonoSingleton instance = null;
-
-	private void Awake()
+	public class VerySimpleMonoSingleton : MonoBehaviour
 	{
-		instance = this;
+		public static VerySimpleMonoSingleton instance = null;
+
+		private void Awake()
+		{
+			instance = this;
+		}
 	}
 }

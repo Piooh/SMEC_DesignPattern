@@ -1,7 +1,7 @@
 ﻿
 namespace Assets.Lecture3
 {
-	public class SwordMan : Solider
+	public class SwordActionController : AniActionController
 	{
 		protected override void InitAction()
 		{

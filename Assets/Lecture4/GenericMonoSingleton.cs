@@ -1,46 +1,50 @@
 ﻿using UnityEngine;
 
-public class GenericMonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+namespace Assets.Lecture4
 {
-	private static T instance = null;
-	public static T Instance
+	public class GenericMonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 	{
-		get
+		private static T instance = null;
+		public static T Instance
 		{
-			if( null == instance )
+			get
 			{
-				instance		= GameObject.FindObjectOfType<T>();
 				if( null == instance )
 				{
-					var go		= new GameObject( typeof(T).ToString() + "_Singleton" );
-					instance	= go.AddComponent<T>();
-					DontDestroyOnLoad( go );
+					instance		= GameObject.FindObjectOfType<T>();
+					if( null == instance )
+					{
+						var go		= new GameObject( typeof(T).ToString() + "_Singleton" );
+						instance	= go.AddComponent<T>();
+						DontDestroyOnLoad( go );
+					}
 				}
+
+				return instance;
 			}
-
-			return instance;
 		}
-	}
 
-	public static bool IsNull { get { return null == instance; } }
+		public static bool IsNull { get { return null == instance; } }
 
-	private void Awake()
-	{
-		if( null != instance )
+		private void Awake()
 		{
-			Destroy(this);
+			if( null != instance )
+			{
+				Destroy(this);
+			}
+			else
+			{
+				instance = this as T;
+				DontDestroyOnLoad(gameObject);
+
+				DoAwake();
+			}
 		}
-		else
+
+		protected virtual void DoAwake()
 		{
-			instance = this as T;
-			DontDestroyOnLoad(gameObject);
 
-			DoAwake();
 		}
-	}
-
-	protected virtual void DoAwake()
-	{
-
 	}
 }
+

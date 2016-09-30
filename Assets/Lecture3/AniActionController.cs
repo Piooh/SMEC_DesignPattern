@@ -2,7 +2,7 @@
 
 namespace Assets.Lecture3
 {
-	public class Solider : MonoBehaviour
+	public class AniActionController : MonoBehaviour
 	{
 		public Animator animator					= null;
 		protected ISoldierAction attackAction	= null;

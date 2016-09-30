@@ -1,7 +1,7 @@
 ﻿
 namespace Assets.Lecture3
 {
-	public class Witch : Solider
+	public class WitchActionController : AniActionController
 	{
 		protected override void InitAction()
 		{

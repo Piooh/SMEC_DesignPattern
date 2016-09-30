@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
-public class NormalMonoSingleton : MonoBehaviour
+namespace Assets.Lecture4
 {
-	private static NormalMonoSingleton instance = null;
-
-	public static NormalMonoSingleton GetSingleton()
+	public class NormalMonoSingleton : MonoBehaviour
 	{
-		if( null == instance )
-		{
-			instance = GameObject.FindObjectOfType<NormalMonoSingleton>();
-		}
+		private static NormalMonoSingleton instance = null;
 
-		return instance;
+		public static NormalMonoSingleton GetSingleton()
+		{
+			if( null == instance )
+			{
+				instance = GameObject.FindObjectOfType<NormalMonoSingleton>();
+			}
+
+			return instance;
+		}
 	}
 }
