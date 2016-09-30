@@ -6,6 +6,7 @@ namespace Assets.Lecture3
 		protected override void InitAction()
 		{
 			attackAction = SwordAction.Get( animator );
+			//attackAction = WitchAction.Get( animator );
 		}
 	}
 }

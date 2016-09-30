@@ -34,7 +34,7 @@ namespace Assets.Lecture3
 
 			do
 			{
-				playTime  += 0.1f;
+				playTime  += Time.deltaTime;
 				yield return null;
 			}
 			while( playTime > endTime );

@@ -19,6 +19,8 @@ namespace Assets.Lecture3.ReadOnlys
 	{
 		public static int ToInt( this Action action )
 		{
+			//return System.Convert.ToInt32( action );
+
 			switch( action )
 			{
 				case Action.Attack:	return 1;
