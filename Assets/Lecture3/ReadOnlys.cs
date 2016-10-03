@@ -8,6 +8,14 @@ namespace Assets.Lecture3.ReadOnlys
 		Attack = 1,
 	}
 
+	public enum CharacterType
+	{
+		SwordMan,
+		Witch,
+		Dragon,
+		Slime
+	}
+
 	public class AnimationID
 	{
 		public static readonly int AniState		= Animator.StringToHash("AnimationState");
