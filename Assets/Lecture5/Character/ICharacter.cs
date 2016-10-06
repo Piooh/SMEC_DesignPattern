@@ -1,4 +1,6 @@
-﻿
+﻿using UnityEngine;
+
+
 namespace Assets.Lecture5
 {
 	public interface ICharacter
@@ -8,6 +10,4 @@ namespace Assets.Lecture5
 		void SetRespawn();
 	}
 
-	public interface ISolider : ICharacter			{}
-	public interface IMonster : ICharacter		{}
 }

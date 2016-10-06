@@ -3,14 +3,11 @@ using System.Collections.Generic;
 
 namespace Assets.Lecture5
 {
-	public class Dragon : MonoBehaviour
-								, IMonster
+	public class Dragon : Monster
 	{
-		public string Name { get; set; }
-
 		private List<IFX> fxList = new List<IFX>();
 
-		public void RegisterFX( IFXFactory fxMaker )
+		public override  void RegisterFX( IFXFactory fxMaker )
 		{
 			var aura			= fxMaker.CreateAura();
 			aura.transform.parent = transform;
@@ -26,7 +23,7 @@ namespace Assets.Lecture5
 			fxList.Add( magic );
 		}
 
-		public void SetRespawn()
+		public override void SetRespawn()
 		{
 		}
 	}

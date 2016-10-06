@@ -2,20 +2,17 @@
 
 namespace Assets.Lecture5
 {
-	public class Slime : MonoBehaviour
-							, IMonster
+	public class Slime : Monster
 	{
-		public string Name { get; set; }
-
 		private FXAura aura	= null;
 
-		public void RegisterFX( IFXFactory fxMaker )
+		public override void RegisterFX( IFXFactory fxMaker )
 		{
-			aura				= fxMaker.CreateAura();
-			aura.transform.parent = transform;
+			aura								= fxMaker.CreateAura();
+			aura.transform.parent	= transform;
 		}
 
-		public void SetRespawn()
+		public override void SetRespawn()
 		{
 		}
 	}
