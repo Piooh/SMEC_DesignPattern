@@ -13,11 +13,10 @@ namespace Assets.Lecture6
 			target.transform.position	= Vector3.right * 15f;
 
 			var slime				= Barrucks.Instance.GetMonster( Lecture3.ReadOnlys.CharacterType.Slime ) as Slime;
-			var aiController	= slime.gameObject.GetComponent<SlimeAICtrl>();
-			if( null  == aiController )
-			{
-				aiController		= slime.gameObject.AddComponent<SlimeAICtrl>();
-			}
+			var aiCtrl				= slime.gameObject.AddComponent<MonsterStateCtrl>();
+			var chasingCtrl		= slime.gameObject.AddComponent<FindChasingTarget>();
+
+			aiCtrl.ChangeBehavior(RoamingAround.Get());
 		}
 	}
 }
