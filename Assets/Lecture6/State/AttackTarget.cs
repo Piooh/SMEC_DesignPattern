@@ -13,7 +13,7 @@ namespace Assets.Lecture6
 		public void Enter( MonsterStateCtrl stateCtrl, Monster mob )
 		{
 			Debug.Log( "Enter the AttackTarget" );
-			delay		= mob.attackSpeed;
+			delay		= mob.Factor.attackSpeed;
 		}
 
 		public void Update( MonsterStateCtrl stateCtrl, Monster mob )
@@ -24,7 +24,7 @@ namespace Assets.Lecture6
 				var pos						= mob.transform.position;
 				var distance				= (targetPos - pos).sqrMagnitude;
 				
-				if( distance <= mob.attackReach )
+				if( distance <= mob.Factor.attackReach )
 				{
 					Attack( mob );
 					return;
@@ -43,7 +43,7 @@ namespace Assets.Lecture6
 		{
 			delay += Time.deltaTime;
 
-			if( delay >= mob.attackSpeed )
+			if( delay >= mob.Factor.attackSpeed )
 			{
 				delay = 0f;
 

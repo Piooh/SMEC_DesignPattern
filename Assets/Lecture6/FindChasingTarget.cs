@@ -35,7 +35,7 @@ namespace Assets.Lecture6
 		{
 			Mob		= GetComponent<Monster>();
 			Target				= null;
-			RangeRadius	= Mob.searchRadius;
+			RangeRadius	= Mob.Factor.searchRadius;
 		}
 
 		private IEnumerator Start()

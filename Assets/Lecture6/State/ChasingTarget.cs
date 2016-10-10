@@ -25,7 +25,7 @@ namespace Assets.Lecture6
 				var pos						= mob.transform.position;
 				var distance				= (targetPos - pos).sqrMagnitude;
 
-				if( distance <= mob.attackReach )
+				if( distance <= mob.Factor.attackReach )
 				{
 					stateCtrl.ChangeBehavior( AttackTarget.Get() );
 				}
@@ -33,7 +33,7 @@ namespace Assets.Lecture6
 				{
 					var dir								=	(targetPos - pos).normalized;
 					mob.transform.rotation	= Quaternion.LookRotation( dir );
-					mob.transform.position	= mob.transform.position + ( dir * mob.moveSpeed * Time.deltaTime );
+					mob.transform.position	= mob.transform.position + ( dir * mob.Factor.moveSpeed * Time.deltaTime );
 				}
 			}
 		}

@@ -15,8 +15,8 @@ namespace Assets.Lecture6
 		{
 			Debug.Log( "Enter the RoamingAround" );
 
-			curTime			= mob.roamingResetTime;
-			roamingDist		= mob.roamingMaxDist; 
+			curTime			= mob.Factor.roamingResetTime;
+			roamingDist		= mob.Factor.roamingMaxDist; 
 		}
 
 		public void Update( MonsterStateCtrl stateCtrl, Monster mob )
@@ -29,7 +29,7 @@ namespace Assets.Lecture6
 
 			var dir		= RandDir( mob );
 			var pos		= mob.transform.position;
-			pos			= pos + ( dir * mob.moveSpeed * Time.deltaTime );
+			pos			= pos + ( dir * mob.Factor.moveSpeed * Time.deltaTime );
 			mob.transform.position = pos;
 		}
 
@@ -42,7 +42,7 @@ namespace Assets.Lecture6
 		{
 			curTime += Time.deltaTime;
 
-			if( curTime >= mob.roamingResetTime || roamingDist >= mob.roamingMaxDist  )
+			if( curTime >= mob.Factor.roamingResetTime || roamingDist >= mob.Factor.roamingMaxDist  )
 			{
 				curTime							= 0f;
 				roamingDist						= 0f;

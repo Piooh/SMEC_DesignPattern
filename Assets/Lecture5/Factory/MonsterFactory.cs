@@ -7,7 +7,7 @@ namespace Assets.Lecture5
 	{
 		protected override ICharacter Create( CharacterType type )
 		{
-			ICharacter monster		= null;
+			Monster monster		= null;
 			IFXFactory fxFactory		= new MonsterFXMaker();
 
 			if( CharacterType.Dragon == type )
@@ -29,7 +29,11 @@ namespace Assets.Lecture5
 				monster				=go.AddComponent<Slime>();
 			}
 
-			monster.RegisterFX( fxFactory );
+			if( null != monster )
+			{
+				monster.SetupFactor();
+				monster.RegisterFX( fxFactory );
+			}
 
 			return monster;
 		}

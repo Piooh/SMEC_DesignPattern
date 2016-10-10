@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 namespace Assets.Lecture5
 {
 	public class Dragon : Monster
 	{
 		private List<IFX> fxList = new List<IFX>();
+
+		public override void SetupFactor()
+		{
+			//[todo];
+			Factor = new MonsterFactors();
+		}
 
 		public override  void RegisterFX( IFXFactory fxMaker )
 		{
