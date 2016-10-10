@@ -8,6 +8,4 @@ namespace Assets.Lecture5
 		void SetRespawn();
 	}
 
-	public interface ISolider : ICharacter			{}
-	public interface IMonster : ICharacter		{}
 }

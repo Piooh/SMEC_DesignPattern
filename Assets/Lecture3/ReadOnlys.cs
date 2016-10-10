@@ -16,6 +16,12 @@ namespace Assets.Lecture3.ReadOnlys
 		Slime
 	}
 
+	public class ConstLayers
+	{
+		public static readonly int Soilder			= LayerMask.NameToLayer( "Solider" );
+		public static readonly int Monster		= LayerMask.NameToLayer( "Monster" );
+	}
+
 	public class AnimationID
 	{
 		public static readonly int AniState		= Animator.StringToHash("AnimationState");

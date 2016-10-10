@@ -5,14 +5,11 @@ using Assets.Lecture3;
 
 namespace Assets.Lecture5
 {
-	public class SwordMan : MonoBehaviour
-									, ISolider
+	public class SwordMan : Solider
 	{
-		public string Name { get; set; }
-
 		private List<IFX>		fxList				= new List<IFX>();
 
-		public void RegisterFX( IFXFactory fxMaker )
+		public override void RegisterFX( IFXFactory fxMaker )
 		{
 			var aura			= fxMaker.CreateAura();
 			aura.transform.parent = transform;
@@ -24,7 +21,7 @@ namespace Assets.Lecture5
 			fxList.Add( spell );
 		}
 
-		public void SetRespawn()
+		public override void SetRespawn()
 		{
 			transform.position = Vector3.left * 10f;
 		}
