@@ -9,8 +9,8 @@ namespace Assets.Lecture5
 		private void Awake()
 		{
 			// solider
-			Barrucks.Instance.GetSolder( Lecture3.ReadOnlys.CharacterType.SwordMan );
-			Barrucks.Instance.GetSolder( Lecture3.ReadOnlys.CharacterType.Witch );
+			Barrucks.Instance.GetSolider( Lecture3.ReadOnlys.CharacterType.SwordMan );
+			Barrucks.Instance.GetSolider( Lecture3.ReadOnlys.CharacterType.Witch );
 
 			// monster
 			Barrucks.Instance.GetMonster( Lecture3.ReadOnlys.CharacterType.Dragon );

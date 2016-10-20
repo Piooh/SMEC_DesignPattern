@@ -9,7 +9,7 @@ namespace Assets.Lecture5
 	{
 		protected override ICharacter Create( CharacterType  type  )
 		{
-			ICharacter character		= null;
+			ICharacter character			= null;
 			IFXFactory fxMaker			= new SoliderFXMaker();
 
 			if ( CharacterType.SwordMan == type )

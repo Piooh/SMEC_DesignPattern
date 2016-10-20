@@ -12,7 +12,7 @@ namespace Assets.Lecture5
 		private CharacterFactory monsterFactory		= new MonsterFactory(); 
 
 		
-		public ICharacter GetSolder( CharacterType type )				{ return characterFactory.Get( type ); }
+		public ICharacter GetSolider( CharacterType type )				{ return characterFactory.Get( type ); }
 		public ICharacter GetMonster( CharacterType type )			{ return monsterFactory.Get( type ); }
 	}
 }
