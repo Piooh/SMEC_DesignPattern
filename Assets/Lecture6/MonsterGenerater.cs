@@ -14,7 +14,8 @@ namespace Assets.Lecture6
 
 			var slime				= Barrucks.Instance.GetMonster( Lecture3.ReadOnlys.CharacterType.Slime ) as Slime;
 			var aiCtrl				= slime.gameObject.AddComponent<MonsterStateCtrl>();
-			var chasingCtrl		= slime.gameObject.AddComponent<FindChasingTarget>();
+			//var chasingCtrl		= slime.gameObject.AddComponent<FindChasingTarget>();
+			slime.gameObject.AddComponent<FindChasingTarget>();
 
 			aiCtrl.ChangeBehavior(RoamingAround.Get());
 		}

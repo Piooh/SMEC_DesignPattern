@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Assets.Lecture5
 {
 	[Serializable]
-	public class MonsterFactors : CharacterFactors
+	public class MonsterFactors : IFactors
 	{
 		public readonly float roamingResetTime			= 3f;
 		public readonly float roamingMaxDist				= 10f;
