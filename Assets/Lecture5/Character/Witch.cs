@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 namespace Assets.Lecture5
 {
@@ -17,6 +18,10 @@ namespace Assets.Lecture5
 			var magic		= fxMaker.CreateMagic();
 			magic.transform.parent = transform;
 			fxList.Add( magic );
+		}
+
+		public override void SetAvatarInfo()
+		{
 		}
 
 		public override void SetRespawn()

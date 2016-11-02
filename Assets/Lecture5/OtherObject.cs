@@ -10,11 +10,13 @@ namespace Assets.Lecture5
 		{
 			// solider
 			Barrucks.Instance.GetSolider( Lecture3.ReadOnlys.CharacterType.SwordMan );
-			Barrucks.Instance.GetSolider( Lecture3.ReadOnlys.CharacterType.Witch );
+			//Barrucks.Instance.GetSolider( Lecture3.ReadOnlys.CharacterType.Witch );
 
-			// monster
-			Barrucks.Instance.GetMonster( Lecture3.ReadOnlys.CharacterType.Dragon );
-			Barrucks.Instance.GetMonster( Lecture3.ReadOnlys.CharacterType.Slime );
+			//// monster
+			//Barrucks.Instance.GetMonster( Lecture3.ReadOnlys.CharacterType.Dragon );
+			//Barrucks.Instance.GetMonster( Lecture3.ReadOnlys.CharacterType.Slime );
+
+
 		}
 	}
 }

@@ -3,9 +3,9 @@ namespace Assets.Lecture5
 {
 	public interface ICharacter
 	{
-		string Name { get; set; }
-		void RegisterFX( IFXFactory fxMaker );
+		void SetAvatarInfo();
 		void SetRespawn();
+		void RegisterFX( IFXFactory fxMaker );
 	}
 
 }

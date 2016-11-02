@@ -8,6 +8,7 @@ namespace Assets.Lecture5
 		{
 			ICharacter character = Create(type);//SimpleFactory.Create( type );
 
+			character.SetAvatarInfo();
 			character.SetRespawn();
 
 			return character;
