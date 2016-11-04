@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Assets.Lecture3;
+using System;
 
 namespace Assets.Lecture5
 {
@@ -21,9 +22,14 @@ namespace Assets.Lecture5
 			fxList.Add( spell );
 		}
 
+		public override void SetAvatarInfo()
+		{
+			Info = new SwordAvatarInfo( "Piooooooh" );
+		}
+
 		public override void SetRespawn()
 		{
-			transform.position = Vector3.left * 10f;
+			//transform.position = Vector3.left * 10f;
 		}
 	}
 }
