@@ -18,20 +18,19 @@ namespace Assets.Lecture6
 
 		public void Update( MonsterStateCtrl stateCtrl, Monster mob )
 		{
-			if( null != mob )
-			{
-				var targetPos			= mob.AggroTarget.position;
-				var pos						= mob.transform.position;
-				var distance				= (targetPos - pos).sqrMagnitude;
+		
+			var targetPos			= mob.AggroTarget.position;
+			var pos						= mob.transform.position;
+			var distance				= (targetPos - pos).sqrMagnitude;
 				
-				if( distance <= mob.Factor.attackReach )
-				{
-					Attack( mob );
-					return;
-				}
+			if( distance <= mob.Factor.attackReach )
+			{
+				Attack( mob );
 			}
-
-			stateCtrl.ChangeBehavior( ChasingTarget.Get() );
+			else
+			{
+				stateCtrl.ChangeBehavior( ChasingTarget.Get() );
+			}
 		}
 
 		public void Exit( MonsterStateCtrl stateCtrl, Monster mob )

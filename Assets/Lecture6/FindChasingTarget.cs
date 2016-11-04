@@ -33,7 +33,7 @@ namespace Assets.Lecture6
 
 		private void Awake()
 		{
-			Mob		= GetComponent<Monster>();
+			Mob					= GetComponent<Monster>();
 			Target				= null;
 			RangeRadius	= Mob.Factor.searchRadius;
 		}
@@ -44,7 +44,7 @@ namespace Assets.Lecture6
 			{
 				yield return StartCoroutine( Search() );
 
-				yield return StartCoroutine(CalcTargetDist());
+				yield return StartCoroutine( CalcTargetDist() );
 			}
 		}
 
@@ -52,7 +52,7 @@ namespace Assets.Lecture6
 		{
 			while ( null == Target )
 			{
-				var colTargets= Physics.OverlapSphere( transform.position, rangeRadius, 1 << ConstLayers.Soilder );
+				var colTargets= Physics.OverlapSphere( transform.position, rangeRadius, 1 << ConstLayers.Soilder, QueryTriggerInteraction.Collide );
 
 				if( null != colTargets )
 				{
@@ -83,7 +83,7 @@ namespace Assets.Lecture6
 			{
 				var dist = Target.position - transform.position;
 
-				if( dist.sqrMagnitude >= (maxChasingDist * maxChasingDist) )
+				if( dist.sqrMagnitude >= maxChasingDist  )
 				{
 					Target = null;
 				}
