@@ -27,19 +27,19 @@ namespace Assets.Lecture3
 			animator.SetInteger( AnimationID.AniState, Action.Attack.ToInt() );
 		}
 
-		public IEnumerator CheckAniEnd()
-		{
-			float playTime = 0f;
-			float endTime = animator.GetCurrentAnimatorStateInfo(0).length;
+		//public IEnumerator CheckAniEnd()
+		//{
+		//	float playTime = 0f;
+		//	float endTime = animator.GetCurrentAnimatorStateInfo(0).length;
 
-			do
-			{
-				playTime  += Time.deltaTime;
-				yield return null;
-			}
-			while( playTime > endTime );
+		//	do
+		//	{
+		//		playTime  += Time.deltaTime;
+		//		yield return null;
+		//	}
+		//	while( playTime > endTime );
 
-			animator.SetInteger( AnimationID.AniState, Action.Idle.ToInt() );
-		}
+		//	animator.SetInteger( AnimationID.AniState, Action.Idle.ToInt() );
+		//}
 	}
 }

@@ -32,7 +32,7 @@ namespace Assets.Lecture3
 
 			attackAction.Attack();
 
-			StartCoroutine( attackAction.CheckAniEnd() );
+			//StartCoroutine( attackAction.CheckAniEnd() );
 		}
 	}
 }
