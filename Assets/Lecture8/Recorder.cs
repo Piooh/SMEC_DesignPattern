@@ -8,21 +8,46 @@ namespace Assets.Lecture8
 {
 	public class Recorder : GenericMonoSingleton<Recorder>
 	{
-		private Queue<PlayableCommand> recordCommand = new Queue<PlayableCommand>();
+		private ulong frame																	= 0;
+		private Queue<PlayableCommand> recordCommand			= new Queue<PlayableCommand>();
 
-		public bool IsEnd { get { return 0 == recordCommand.Count; } }
+		public bool IsPlay				{ get; private set; }		
 
 		public void Recording( PlayableCommand command )
 		{
+			command.frame						= frame;
 			recordCommand.Enqueue( command );
 		}
 
-		public void Play( ulong frame )
+		public void Play()
 		{
-			if( recordCommand.Peek().frame != frame ) { return; }
+			IsPlay			= true;
+			frame			= 0;
+		}
 
-			var command = recordCommand.Dequeue();
-			command.Excute();
+		private void Update()
+		{
+			if( true == IsPlay )
+			{
+				PlayRecording();
+			}
+
+			frame++;
+		}
+
+		private void PlayRecording()
+		{
+			if( 0 == recordCommand.Count )
+			{
+				IsPlay = false;
+			}
+			else
+			{
+				if( recordCommand.Peek().frame != frame )			{ return;  }
+
+				var command = recordCommand.Dequeue();
+				command.Excute();
+			}
 		}
 	}
 }

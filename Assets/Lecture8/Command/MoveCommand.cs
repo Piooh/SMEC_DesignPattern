@@ -16,6 +16,13 @@ namespace Assets.Lecture8
 			frame		= _frame;			
 		}
 
+		public MoveCommand( Solider solider, Vector3 _dir )
+		{
+			player		= solider;
+			dir			= _dir;
+			frame		= 0;
+		}
+
 		public override void Excute()
 		{
 			player.Move( dir );
