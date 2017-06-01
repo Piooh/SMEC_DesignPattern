@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ScrollingPanel : UIPanel
+									, IBeginDragHandler
+									, IDragHandler
+									, IEndDragHandler
 {
 	public RectTransform contentsRect		= null;
 	public GameObject contentsPrefab		= null;
@@ -120,14 +124,71 @@ public class ScrollingPanel : UIPanel
 
 		Vector3 dir			= true == scrollRect.horizontal ? Vector3.right : Vector3.down;
 		float size			= true == scrollRect.horizontal ? (ContentsWidth + contentOffsetSize.x) : (ContentsHeight + contentOffsetSize.y);
+		float halfSize		= size * 0.5f;
+
+		Vector3 pos		= Vector3.zero + (dir * halfSize);
 
 		for( int i = 0; i < InstantCount; i++)
 		{
 			var item			= Instantiate<GameObject>( contentsPrefab, Vector3.zero, Quaternion.identity, contentsRect  );
-			item.transform.localPosition = Vector3.zero + (dir * size * i);
+			item.transform.localPosition = pos + (dir * size * i);
 			item.name		= string.Format( "Item_{0:000}", i );
 
 			Debug.LogError( string.Format("{0} : {1}", i,  item.transform.localPosition  ));
 		}
+	}
+
+	public virtual void IndexCalc()
+	{
+		var scrollviewRect				= scrollRect.transform as RectTransform;
+		var scrollviewHalfHeight		= scrollviewRect.sizeDelta.y * 0.5f;
+		var scrollCenter					= contentsRect.InverseTransformPoint( scrollviewRect.position );
+		
+		float size							= (ContentsHeight + contentOffsetSize.y);
+
+		for( int i = 0; i < InstantCount; i++ )
+		{
+			var content					= contentsRect.GetChild( i );
+			var pos						= content.localPosition;
+			var dist						= (pos.y - scrollCenter.y);
+
+			Debug.LogError( "ScrollCenter : " + scrollCenter + ", halfHeight : " + scrollviewHalfHeight  + ", dist : " + dist );
+			Debug.LogError( "[ "+i+" ] contentPos : " + pos );
+
+			if( dist < -scrollviewHalfHeight )
+			{
+				Debug.LogWarning( "[ "+i+" ]bottom out : " + content.name  + ", conetnt pos : " + pos );
+				pos.y							= pos.y + (scrollviewHalfHeight * 2.0f);
+				var index					= Mathf.RoundToInt(pos.y / size);
+
+				content.localPosition	= pos;
+			}
+			else if( dist > scrollviewHalfHeight )
+			{
+				Debug.LogWarning( "[ "+i+" ]top out : " + content.name  + ", conetnt pos : " + pos );
+				pos.y							= pos.y - (scrollviewHalfHeight * 2.0f);
+				var index					= Mathf.RoundToInt(pos.y / size);
+
+				content.localPosition	= pos;
+			}
+		}
+	}
+
+	public virtual void OnBeginDrag( PointerEventData evt )
+	{
+		//Debug.LogError( "Drag Start");
+		IndexCalc();
+	}
+
+	public virtual void OnDrag( PointerEventData evt )
+	{
+		//Debug.LogError( "Drag ------------------");
+		IndexCalc();
+	}
+
+	public virtual void OnEndDrag( PointerEventData evt )
+	{
+		//Debug.LogError( "Drag END");
+		IndexCalc();
 	}
 }
